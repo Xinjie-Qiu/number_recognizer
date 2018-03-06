@@ -3,6 +3,8 @@ import tornado.web
 from machines.machine_loader import MachineLoader
 import machines.number_recognizer
 from machines.number_recognizer.validator import Validator
+import numpy as np
+from number_recognizer import number_recognizer
 
 
 class IndexHandler(tornado.web.RequestHandler):
@@ -19,13 +21,15 @@ class PredictionHandler(BaseHandler):
     def post(self):
         resp = {"result": str(-1)}
         data = self.get_arguments("data[]")
-
         validated = Validator.validate_data(data)
-        machine = MachineLoader.load(machines.number_recognizer)
-        if len(validated) > 0:
-            predicted = machine.predict(validated)
-            resp["result"] = str(predicted[0])
 
+        # machine = MachineLoader.load(machines.number_recognizer)
+        # if len(validated) > 0:
+        #     predicted = machine.predict(validated)
+        #     resp["result"] = str(predicted[0])
+        number_recognizer.train()
+        result = number_recognizer.test(validated)
+        resp["result"] = str(result)
         self.write(resp)
 
 

@@ -81,7 +81,7 @@ var app = new Vue({
     data: {
         canvas: null,
         SNAP_SIZE: 120,
-        SAMPLE_SIZE: 8,
+        SAMPLE_SIZE: 28,
         predicts: []
     },
     created: function(){

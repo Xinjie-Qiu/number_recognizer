@@ -17,7 +17,7 @@ class Validator():
         validated = []
 
         # check data length 8 * 8 = 64
-        if len(data) == 64:
+        if len(data) == 784:
             try:
                 validated = [float(v) for v in data]
             except Exception as ex:
