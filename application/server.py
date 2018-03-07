@@ -27,7 +27,7 @@ class PredictionHandler(BaseHandler):
         # if len(validated) > 0:
         #     predicted = machine.predict(validated)
         #     resp["result"] = str(predicted[0])
-        number_recognizer.train()
+        # number_recognizer.train()
         result = number_recognizer.test(validated)
         resp["result"] = str(result)
         self.write(resp)
