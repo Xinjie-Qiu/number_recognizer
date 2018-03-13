@@ -3,9 +3,10 @@ import tornado.web
 from machines.machine_loader import MachineLoader
 import machines.number_recognizer
 from machines.number_recognizer.validator import Validator
+from number_recognizer.number_recognizer import Number_Recongnizer
 import numpy as np
-from number_recognizer import number_recognizer
 
+number_recognizer = Number_Recongnizer()
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
@@ -71,5 +72,5 @@ class Application(tornado.web.Application):
             xsrf_cookies=True,
             debug=True,
         )
-
+        number_recognizer.load()
         super(Application, self).__init__(handlers, **settings)
