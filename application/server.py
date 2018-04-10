@@ -5,6 +5,7 @@ import machines.number_recognizer
 from machines.number_recognizer.validator import Validator
 from number_recognizer.number_recognizer import Number_Recongnizer
 import numpy as np
+import cv2
 
 number_recognizer = Number_Recongnizer()
 
@@ -29,6 +30,9 @@ class PredictionHandler(BaseHandler):
         #     predicted = machine.predict(validated)
         #     resp["result"] = str(predicted[0])
         # number_recognizer.train()
+
+
+
         result = number_recognizer.test(validated)
         resp["result"] = str(result)
         self.write(resp)
